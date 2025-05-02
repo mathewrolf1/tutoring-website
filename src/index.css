@@ -1,44 +1,41 @@
-* {
-  box-sizing: border-box;
+@import "tailwindcss";
+
+html, body {
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: black;
+  color:antiquewhite; 
 }
 
-body {
-  padding: 40px;
-  background-color: #151515;
-  font-family: "Franklin Gothic Medium", Arial;
+@layer utilities {
+
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 0.8s step-end infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
+
+  .animate-loading-bar {
+    animation: loading 0.8s ease infinite;
+  }
+
 }
 
-h2 {
-  color: #f3f3f3;
-  text-align: center;
-  font-size: 50px;
-}
 
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.card {
-  border: 1 px solid #4b5362;
-  padding: 20px;
-  margin: 10px;
-  background-color: #31363f;
-  border-radius: 10px;
-  min-height: 100px;
-}
-
-button {
-  border: none;
-  font-size: 30px;
-  background-color: transparent;
-  width: 100%;
-  text-align: right;
-  cursor: pointer;
-}
