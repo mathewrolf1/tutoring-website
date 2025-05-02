@@ -3,9 +3,6 @@ import './App.css'
 
 
 
-
-
-
 const Card = ({ title, rating }) => {
 
 
