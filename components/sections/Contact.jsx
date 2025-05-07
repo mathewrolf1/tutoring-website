@@ -1,7 +1,7 @@
 export const Contact = () => {
     return (
 
-        <section id="contact" className="min-h-screen flex items-center justify-center py-20">
+        <section id="contact" className="min-h-screen flex items-end justify-center py-20">
             <div className="z-0 w-full max-w-3xl mx-auto px-4 ">
                 <h2 className="text-5xl font-bold mb-8 bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent text-center">
                     Contact information
