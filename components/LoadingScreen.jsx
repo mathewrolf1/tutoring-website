@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export const LoadingScreen = ({ onComplete }) => {
     const [text, setText] = useState("");
-    const fullText = "Quality Online Education";
+    const fullText = "Find your perfect tutor today";
 
     useEffect(() => {
         let index = 0;
@@ -25,10 +25,10 @@ export const LoadingScreen = ({ onComplete }) => {
 
     return (
         <div className="fixed inset-0 z-50 bg-white text-black flex flex-col items-center justify-center">
-            <div className="mb-4 text-4xl font-mono font-bold">
-                {text} <span className="animate-blink ml-1"> | </span>
+            <div className="fixed top-50 text-2xl md:text-7xl mb-6 bg-gradient-to-r from-yellow-300 to-yellow-600 bg-clip-text text-transparent leading-right">
+                {text} <span className="animate-blink ml-1 text-orange-300"> | </span>
             </div>
-
+            <img src="eled.png" alt="Eled Tutoring" className="fixed top-80 w-70 h-70 border-black border-2"></img>
             <div className="w-[200px] h-[2px] bg-gray-800 rounded relative overflow-hidden">
                 <div className="w-[40%] h-full bg-yellow-500 shadow-[0_0_15px_#3b82f6] animate-loading-bar">
                 </div>

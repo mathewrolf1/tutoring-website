@@ -1,6 +1,6 @@
 
 export const Home = () => {
-    return <section id="home" className="min-h-screen flex items-center justify-center relative">
+    return (<section id="home" className="min-h-screen flex items-center justify-center relative">
 
         <div className="text-center fixed top-50 z-10 px-4">
             <h1 className="text-2xl md:text-7xl mb-6 bg-gradient-to-r from-yellow-300 to-yellow-600 bg-clip-text text-transparent leading-right">
@@ -14,7 +14,7 @@ export const Home = () => {
             <div className="flex justify-center space-x-4">
                 <a href="#tutors" className="bg-yellow-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden 
                                              hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.8)]">
-                    Meet Our Tutors
+                    Find Your Tutor
                 </a>
 
                 <a href="#contact" className="border border-yellow-500/100 text-yellow-500 py-3 px-6 rounded font-medium transition-all duration-200
@@ -24,5 +24,6 @@ export const Home = () => {
 
             </div>
         </div>
-    </section>;
+    </section>
+    );
 };
