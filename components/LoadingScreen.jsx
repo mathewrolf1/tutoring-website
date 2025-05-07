@@ -28,8 +28,8 @@ export const LoadingScreen = ({ onComplete }) => {
             <div className="fixed top-50 text-2xl md:text-7xl mb-6 bg-gradient-to-r from-yellow-300 to-yellow-600 bg-clip-text text-transparent leading-right">
                 {text} <span className="animate-blink ml-1 text-orange-300"> | </span>
             </div>
-            <img src="eled.png" alt="Eled Tutoring" className="fixed top-80 w-70 h-70 border-black border-2"></img>
-            <div className="w-[200px] h-[2px] bg-gray-800 rounded relative overflow-hidden">
+            <img src="eled.png" alt="Eled Tutoring" className="fixed top-80 w-70 h-70 border-black border-2"/>
+            <div className="w-[200px] h-[2px] bg-yellow-800 rounded relative overflow-hidden">
                 <div className="w-[40%] h-full bg-yellow-500 shadow-[0_0_15px_#3b82f6] animate-loading-bar">
                 </div>
             </div>
