@@ -3,7 +3,7 @@ import ReviewsCard from "../ReviewsCard";
 export const Home = () => {
     return (<section id="home" className="min-h-screen flex items-center justify-center relative">
 
-        <div className="text-center fixed top-22 z-10 h-1/3 w-25/26 px-4 py-4 bg-white border-2"> 
+        <div className="text-center fixed top-22 z-20 w-25/26 px-4 py-4 bg-white border-2"> 
             <h1 className="text-2xl md:text-7xl mb-6 bg-gradient-to-r py-6 from-yellow-400 to-orange-600 bg-clip-text text-transparent leading-right">
                 Find your perfect tutor today
             </h1> 
@@ -26,7 +26,7 @@ export const Home = () => {
 
         </div>
 
-        <div className="min-h-screen flex flex-col items-center top-150 md:px-32 px-5 absolute">
+        <div className="min-h-screen flex flex-col items-center top-150 z-10 md:px-32 px-5 absolute">
                 <h2 className="text-5xl font-bold mb-3 bg-gradient-to-r from-orange-600 to-yellow-400 bg-clip-text text-transparent text-center">
                     Reviews
                 </h2>

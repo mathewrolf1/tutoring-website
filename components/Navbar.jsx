@@ -11,7 +11,7 @@ export const Navbar = ({menuOpen, setMenuOpen}) => {
         <div className="max-w-5xl mx-auto px-4">
             <div className="flex justify-between items-center h-16">
                 
-                <a href="#home" className="font-mono text-3xl font-bold text-black"> 
+                <a href="/" className="font-mono text-3xl font-bold text-black"> 
                  Eled<span className="text-yellow-500">Tutors</span>
                 </a>
                 <div className={`w-7 h-5 relative cursor-pointer z-40 md:hidden text-xl top-2 ${menuOpen ? "opacity-0" : "opacity-100"}`} onClick={() => setMenuOpen((prev) => !prev)}>
@@ -19,10 +19,9 @@ export const Navbar = ({menuOpen, setMenuOpen}) => {
                 </div>
 
                 <div className="hidden md:flex items-center space-x-8 text-xl">
-                    <a href="#home" className="text-orange-600 hover:underline transition-colors font-semibold">Home</a>
-                    <a href="#tutors" className="text-gray-700 hover:underline transition-colors">Tutors</a>
+                    <a href="/" className="text-orange-600 hover:underline transition-colors font-semibold">Home</a>
                     <a href="#contact" className="text-gray-700 hover:underline transition-colors">Contact</a>
-                    <a href="#review" className="text-gray-700 hover:underline transition-colors">Reviews</a>
+                    <a href="assess" className="text-gray-700 hover:underline hover:text-orange-600 font-semibold transition-colors">Assess</a>
 
                 </div>
 
