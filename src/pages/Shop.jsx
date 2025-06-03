@@ -129,14 +129,15 @@ const Shop = () => {
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       <div className="pt-24 px-4 md:px-8">
-        <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-rose-400 to-orange-600 bg-clip-text text-transparent">
+        <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-rose-300 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]
+">
           Shop our Jerky
         </h1>
 
         <div className="flex flex-col md:flex-row gap-8 items-start justify-center">
           {/* Filter Panel */}
           <div className="w-full md:w-1/3 lg:w-1/4 p-6 bg-gray-800 rounded-lg shadow-xl">
-            <h2 className="text-3xl font-semibold mb-6 text-yellow-500">Filters</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-rose-500">Filters</h2>
 
             {/* Flavor Selector */}
             <div className="mb-6">
@@ -196,13 +197,13 @@ const Shop = () => {
             <div className="w-full flex flex-col gap-4 md:w-3/4 lg:w-2/3"> {/* Constrained width of buttons on larger screens */}
               <button
                 onClick={handleAddToCart}
-                className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-lg shadow-md transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75"
+                className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg shadow-md transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75"
               >
                 Add to Cart
               </button>
               <button
                 onClick={handleBuyNow}
-                className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75"
+                className="w-full bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75"
               >
                 Buy Now
               </button>

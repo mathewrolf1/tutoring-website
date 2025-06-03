@@ -14,8 +14,10 @@ export const MobileMenu = ({menuOpen, setMenuOpen}) => {
                                                                aria-label="Close Menu">    
                         &times;
                     </button> 
-                <a href="#home" onClick={() => setMenuOpen(false)} 
-                className={`text-2xl font-semibold text-yellow-500 my-4 transform transition-transform duration-300 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>Home</a>
+                <a href="/" onClick={() => setMenuOpen(false)} 
+                className={`text-2xl font-semibold text-rose-500 my-4 transform transition-transform duration-300 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>Home</a>
+                <a href="Shop" onClick={() => setMenuOpen(false)} 
+                className={`text-2xl font-semibold text-black my-4 transform transition-transform duration-300 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>Shop</a>
                 <a href="Support" onClick={() => setMenuOpen(false)} 
                 className={`text-2xl font-semibold text-black my-4 transform transition-transform duration-300 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>Support</a>
         </div>
