@@ -1,136 +1,85 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '../../components/Navbar';
 import { MobileMenu } from '../../components/MobileMenu';
-import { useCart } from '../context/CartContext.jsx'; // 1. Import useCart
+import { useCart } from '../context/CartContext.jsx';
 import { useLocation } from "react-router-dom";
+import { jerkyCatalog, bagSizes } from '../models/Jerky.jsx';
 
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
-
-
-// Product image paths (replace with actual URLs or paths)
-const productImages = {
-  spicy_sweet_garlic: {
-    small: '/images/jerky_spicy_small.png',
-    medium: '/images/jerky_spicy_medium.png',
-    large: '/images/jerky_spicy_large.png',
-    family: '/images/jerky_spicy_family.png',
-  },
-  lemongrass: {
-    small: '/images/jerky_lemongrass_small.png',
-    medium: '/images/jerky_lemongrass_medium.png',
-    large: '/images/jerky_lemongrass_large.png',
-    family: '/images/jerky_lemongrass_family.png',
-  },
-  mild: {
-    small: '/images/jerky_mild_small.png',
-    medium: '/images/jerky_mild_medium.png',
-    large: '/images/jerky_mild_large.png',
-    family: '/images/jerky_mild_family.png',
-  },
-  ghost_pepper: {
-    small: '/images/jerky_ghost_small.png',
-    medium: '/images/jerky_ghost_medium.png',
-    large: '/images/jerky_ghost_large.png',
-    family: '/images/jerky_ghost_family.png',
-  },
-};
-
-// Flavor and size options
-const flavors = [
-  { value: 'spicy_sweet_garlic', label: 'Spicy Sweet Garlic' },
-  { value: 'lemongrass', label: 'Lemongrass' },
-  { value: 'mild', label: 'Mild' },
-  { value: 'ghost_pepper', label: 'Ghost Pepper' },
-];
-
-const bagSizes = [
-  { value: 'small', label: 'Small Bag (2 oz)' },
-  { value: 'medium', label: 'Medium Bag (4 oz)' },
-  { value: 'large', label: 'Large Bag (8 oz)' },
-  { value: 'family', label: 'Family Pack (16 oz)' },
-];
-
-// Placeholder pricing - replace with your actual pricing logic
-const productPrices = {
-  spicy_sweet_garlic: { small: 17, medium: 25, large: 35, family: 60 },
-  lemongrass: { small: 17, medium: 25, large: 35, family: 60 },
-  mild: { small: 17, medium: 25, large: 35, family: 60 },
-  ghost_pepper: { small: 18, medium: 27, large: 38, family: 65 }, // Example: Ghost pepper is pricier
-};
-
+// Custom hook to read query params
+const useQuery = () => new URLSearchParams(useLocation().search);
 
 const Shop = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);//__#+@_O#+_($_+@#($)_+I@)_I$)+ RIGHT NOW REVIEWCARDS WORK BUT IT IS BECAUSE OF THIS SECTION, 
   const query = useQuery();
   const initialFlavor = query.get("flavor");
-  const [selectedFlavor, setSelectedFlavor] = useState(
-    initialFlavor && productImages[initialFlavor] ? initialFlavor : flavors[0].value
-  );
+
+  // Find jerky object matching initial flavor, fallback to first
+  const initialJerky = jerkyCatalog.find(j => j.getFlavor() === initialFlavor) || jerkyCatalog[0];
+  const [selectedJerky, setSelectedJerky] = useState(initialJerky);
   const [selectedBagSize, setSelectedBagSize] = useState(bagSizes[0].value);
   const [currentImage, setCurrentImage] = useState('');
 
-  const { addItemToCart } = useCart(); // 2. Access addItemToCart from context
+  const { addItemToCart } = useCart(); //THIS IS REDUDENT AND I WOULD RECOMMEND JSUT UPDATING YOUR REVIEW CARDS TO USE THE OBJECTS
 
-  // Update image when selection changes
+  // Update image whenever flavor or size changes
   useEffect(() => {
-    if (productImages[selectedFlavor]?.[selectedBagSize]) {
-      setCurrentImage(productImages[selectedFlavor][selectedBagSize]);
-    } else {
+    try {
+      selectedJerky.setSize(selectedBagSize);
+      setCurrentImage(selectedJerky.getImage());
+    } catch (e) {
       setCurrentImage('/images/jerky_placeholder.png');
     }
-  }, [selectedFlavor, selectedBagSize]);
+  }, [selectedJerky, selectedBagSize]);
 
-  const handleFlavorChange = (e) => setSelectedFlavor(e.target.value);
+  const handleFlavorChange = (e) => {
+    const newFlavor = e.target.value;
+    const newJerky = jerkyCatalog.find(j => j.getFlavor() === newFlavor);
+    if (newJerky) setSelectedJerky(newJerky);
+  };
+
   const handleBagSizeChange = (e) => setSelectedBagSize(e.target.value);
 
-  // Add to Cart button handler
   const handleAddToCart = () => {
-    // 3. Update productToAdd with price and image, then call context function
-    const price = productPrices[selectedFlavor]?.[selectedBagSize] || 17; // Fallback price if not found
+    const price = selectedJerky.getPrice();
+    const flavorLabel = selectedJerky.getFlavor();
+    const sizeLabel = bagSizes.find(s => s.value === selectedBagSize)?.label;
 
     const productToAdd = {
-      id: `${selectedFlavor}-${selectedBagSize}`, // Unique ID for this product variant
-      name: `${flavors.find(f => f.value === selectedFlavor)?.label} - ${bagSizes.find(s => s.value === selectedBagSize)?.label}`,
-      price: price, // Include the price
-      image: currentImage, // Include the current image
-      flavor: selectedFlavor,
+      id: `${flavorLabel}-${selectedBagSize}`,
+      name: `${selectedJerky.getFlavor()} - ${sizeLabel}`,
+      price,
+      image: currentImage,
+      flavor: flavorLabel,
       size: selectedBagSize,
-      // quantity will be handled by addItemToCart in the context (defaults to 1 if new)
     };
 
-    addItemToCart(productToAdd); // Call the function from CartContext
-    console.log('Adding to cart via context:', productToAdd);
+    addItemToCart(productToAdd);
     alert(`${productToAdd.name} has been added to your cart!`);
   };
 
-  // Buy Now button handler
   const handleBuyNow = () => {
-    const price = productPrices[selectedFlavor]?.[selectedBagSize] || 17;
+    const price = selectedJerky.getPrice();
+    const sizeLabel = bagSizes.find(s => s.value === selectedBagSize)?.label;
+
     const productToBuy = {
-      id: `${selectedFlavor}-${selectedBagSize}`,
-      name: `${flavors.find(f => f.value === selectedFlavor)?.label} - ${bagSizes.find(s => s.value === selectedBagSize)?.label}`,
-      price: price,
+      id: `${selectedJerky.getFlavor()}-${selectedBagSize}`,
+      name: `${selectedJerky.getFlavor()} - ${sizeLabel}`,
+      price,
       image: currentImage,
-      flavor: selectedFlavor,
+      flavor: selectedJerky.getFlavor(),
       size: selectedBagSize,
     };
-    console.log('Buying now:', productToBuy);
-    // For a real "Buy Now", you might add to cart and redirect, or go to a special checkout
-    // addItemToCart({ ...productToBuy, quantity: 1 }); // Optionally add to cart first
-    // window.location.href = '/checkout'; // Then redirect
+
     alert(`Proceeding to buy ${productToBuy.name}! (This is a placeholder for checkout)`);
   };
 
   return (
-    <div className="min-h-screen bg-gray-200 text-black"> {/* Changed text-antiquewhite to text-black for better readability on gray-200 */}
+    <div className="min-h-screen bg-gray-200 text-black">
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       <div className="pt-24 px-4 md:px-8">
-        <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-rose-300 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]
-">
+        <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-rose-300 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
           Shop our Jerky
         </h1>
 
@@ -146,13 +95,13 @@ const Shop = () => {
               </label>
               <select
                 id="flavor-select"
-                value={selectedFlavor}
+                value={selectedJerky.getFlavor()}
                 onChange={handleFlavorChange}
                 className="w-full p-3 bg-gray-700 border border-gray-600 rounded-md text-white shadow-sm focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50"
               >
-                {flavors.map((flavor) => (
-                  <option key={flavor.value} value={flavor.value}>
-                    {flavor.label}
+                {jerkyCatalog.map(j => (
+                  <option key={j.getFlavor()} value={j.getFlavor()}>
+                    {j.getFlavor().replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
                   </option>
                 ))}
               </select>
@@ -179,22 +128,22 @@ const Shop = () => {
           </div>
 
           {/* Product Display */}
-          <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-center p-6 bg-white rounded-lg shadow-xl"> {/* Changed product display background to white */}
+          <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-center p-6 bg-white rounded-lg shadow-xl">
             <img
               src={currentImage}
-              alt={`Jerky - ${selectedFlavor} - ${selectedBagSize}`}
+              alt={`Jerky - ${selectedJerky.getFlavor()} - ${selectedBagSize}`}
               className="max-w-full h-auto rounded-md object-contain mb-4"
-              style={{ maxHeight: '400px', maxWidth: '400px' }} // Slightly reduced max size for better layout
+              style={{ maxHeight: '400px', maxWidth: '400px' }}
             />
-            <p className="text-xl text-gray-800 mb-2 font-semibold"> {/* Adjusted text color and added font-semibold */}
-              {flavors.find(f => f.value === selectedFlavor)?.label} - {bagSizes.find(s => s.value === selectedBagSize)?.label}
+            <p className="text-xl text-gray-800 mb-2 font-semibold">
+              {selectedJerky.getFlavor().replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())} - {bagSizes.find(s => s.value === selectedBagSize)?.label}
             </p>
             <p className="text-2xl text-orange-600 font-bold mb-6">
-              ${productPrices[selectedFlavor]?.[selectedBagSize] || '17.00'} {/* Display the price */}
+              ${selectedJerky.getPrice()}
             </p>
 
             {/* Action Buttons */}
-            <div className="w-full flex flex-col gap-4 md:w-3/4 lg:w-2/3"> {/* Constrained width of buttons on larger screens */}
+            <div className="w-full flex flex-col gap-4 md:w-3/4 lg:w-2/3">
               <button
                 onClick={handleAddToCart}
                 className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg shadow-md transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75"
