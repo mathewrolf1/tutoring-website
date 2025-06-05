@@ -13,7 +13,7 @@ const App = () => {
       return (
       <>
       <div className={`min-h-screen bg-white text-black`}>
-        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} cartOpen={cartOpen} setCartOpen={setCartOpen}/>
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
         <ShoppingCart cartOpen={cartOpen} setCartOpen={setCartOpen}/>
         <Home /> 

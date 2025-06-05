@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '../../components/Navbar';
 import { MobileMenu } from '../../components/MobileMenu';
+import ShoppingCart from '../../components/ShoppingCart.jsx';
 import { useCart } from '../context/CartContext.jsx';
 import { useLocation } from "react-router-dom";
 import { jerkyCatalog, bagSizes } from '../models/Jerky.jsx';
+
+
 
 // Custom hook to read query params
 const useQuery = () => new URLSearchParams(useLocation().search);
 
 const Shop = () => {
-  const [menuOpen, setMenuOpen] = useState(false);//__#+@_O#+_($_+@#($)_+I@)_I$)+ RIGHT NOW REVIEWCARDS WORK BUT IT IS BECAUSE OF THIS SECTION, 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false); //__#+@_O#+_($_+@#($)_+I@)_I$)+ RIGHT NOW REVIEWCARDS WORK BUT IT IS BECAUSE OF THIS SECTION, 
   const query = useQuery();
   const initialFlavor = query.get("flavor");
 
@@ -75,8 +79,10 @@ const Shop = () => {
 
   return (
     <div className="min-h-screen bg-gray-200 text-black">
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} cartOpen={cartOpen} setCartOpen={setCartOpen}/>
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <ShoppingCart cartOpen={cartOpen} setCartOpen={setCartOpen}/>
+      
 
       <div className="pt-24 px-4 md:px-8">
         <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-rose-300 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
