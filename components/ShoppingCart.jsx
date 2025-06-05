@@ -7,7 +7,7 @@ export default function ShoppingCart({ cartOpen, setCartOpen }) {
   const { cartItems, removeItemFromCart, getCartTotalPrice } = useCart();
 
   return (
-    <Dialog open={cartOpen} onClose={setCartOpen} className="relative z-10">
+    <Dialog open={cartOpen} onClose={setCartOpen} className="relative z-40">
       <DialogBackdrop className="fixed inset-0 bg-gray-500/75 transition-opacity duration-500 ease-in-out data-closed:opacity-0" />
 
       <div className="fixed inset-0 overflow-hidden">
@@ -95,7 +95,7 @@ export default function ShoppingCart({ cartOpen, setCartOpen }) {
                   <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                   <div className="mt-6">
                     <a
-                      href="#"
+                      href="Checkout"
                       className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-indigo-700"
                     >
                       Checkout

@@ -85,7 +85,7 @@ const Shop = () => {
       
 
       <div className="pt-24 px-4 md:px-8">
-        <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-rose-300 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+        <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-rose-300 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_2px_1.2px_rgba(0,0,0,0.8)]">
           Shop our Jerky
         </h1>
 

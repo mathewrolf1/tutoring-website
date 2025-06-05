@@ -16,9 +16,11 @@
     "@tailwindcss/vite": "^4.1.5",
     "class-variance-authority": "^0.7.1",
     "headlessui": "^0.0.0",
+    "next.js": "^1.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.6.0",
+    "stripe": "^18.2.1",
     "tailwind-merge": "^3.2.0",
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.1.5"

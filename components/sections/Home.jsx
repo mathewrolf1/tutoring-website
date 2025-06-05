@@ -5,7 +5,7 @@ export const Home = () => {
     <section id="home" className="min-h-screen top-2 items-center justify-center px-4 relative">
       <div class="bg-[url(/src/assets/jerky.jpg)]">
       <div className="text-center px-4 py-4 bg-gray-10 border-2">
-        <h1 className="text-2xl md:text-7xl mb-6 bg-gradient-to-r py-6 from-rose-200 to-orange-300 bg-clip-text text-transparent leading-right drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+        <h1 className="text-2xl md:text-7xl mb-6 bg-gradient-to-r py-6 from-rose-200 to-orange-300 bg-clip-text text-transparent leading-right drop-shadow-[0_2px_1.2px_rgba(0,0,0,0.8)]">
           Quality, Homemade Jerky
         </h1>
         <p className="text-stone-200 text-lg font-bold mb-8 max-w-lg mx-auto drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">

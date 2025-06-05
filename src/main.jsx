@@ -4,6 +4,7 @@ import './index.css';
 import App from './pages/App.jsx';
 import Support from './pages/Support.jsx';
 import Shop from './pages/Shop.jsx';
+import Checkout from './pages/Checkout.jsx';
 // Assuming you created CartContext.jsx in 'src/context/CartContext.jsx'
 import { CartProvider } from './context/CartContext.jsx'; // 1. Import CartProvider
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
    {
     path: "shop",
     element: <Shop/>,
+  },
+  {
+    path: "checkout", 
+    element: <Checkout/>,
   },
   // Future: Add a route for your CartPage here
   // {
