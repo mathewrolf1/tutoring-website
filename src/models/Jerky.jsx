@@ -8,46 +8,39 @@ export const flavors = [
 ];
 
 export const bagSizes = [
-  { value: 'small',  label: 'Small Bag (2 oz)'  },
-  { value: 'medium', label: 'Medium Bag (4 oz)' },
-  { value: 'large',  label: 'Large Bag (8 oz)'  },
-  { value: 'family', label: 'Family Pack (16 oz)'},
+  { value: 'small',  label: 'Singular Pack (150g)'  },
+  { value: 'medium',  label: 'Four Pack (600g)'  }
 ];
 
 // Product image paths
 const productImages = {
   spicy_sweet_garlic: {
-    small:  '/images/jerky_spicy_small.png',
-    medium: '/images/jerky_spicy_medium.png',
-    large:  '/images/jerky_spicy_large.png',
-    family: '/images/jerky_spicy_family.png',
+    small:  "src/assets/garlic.jpg",
+    medium:  "src/assets/garlic.jpg"
   },
   lemongrass: {
-    small:  '/images/jerky_lemongrass_small.png',
-    medium: '/images/jerky_lemongrass_medium.png',
-    large:  '/images/jerky_lemongrass_large.png',
-    family: '/images/jerky_lemongrass_family.png',
+    small:  "src/assets/lemongrass.jpg",
+    medium:  "src/assets/lemongrass.jpg",
+   
   },
   mild: {
-    small:  '/images/jerky_mild_small.png',
-    medium: '/images/jerky_mild_medium.png',
-    large:  '/images/jerky_mild_large.png',
-    family: '/images/jerky_mild_family.png',
+    small:  "src/assets/outofstock.jpg",
+    medium:  "src/assets/outofstock.jpg",
+
   },
   ghost_pepper: {
-    small:  '/images/jerky_ghost_small.png',
-    medium: '/images/jerky_ghost_medium.png',
-    large:  '/images/jerky_ghost_large.png',
-    family: '/images/jerky_ghost_family.png',
+    small:  "src/assets/outofstock.jpg",
+    medium:  "src/assets/outofstock.jpg",
+   
   },
 };
 
 // Product pricing by flavor and size
 export const productPrices = {
-  spicy_sweet_garlic: { small: 17, medium: 25, large: 35, family: 60 },
-  lemongrass:          { small: 17, medium: 25, large: 35, family: 60 },
-  mild:                { small: 17, medium: 25, large: 35, family: 60 },
-  ghost_pepper:        { small: 18, medium: 27, large: 38, family: 65 },
+  spicy_sweet_garlic: {small: 15, medium: 55},
+  lemongrass:          {small: 15, medium: 55},
+  mild:                {small: 15, medium: 55},
+  ghost_pepper:        {small: 20, medium: 60},
 };
 
 //Data END--------------------------------------------------------

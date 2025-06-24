@@ -17,7 +17,7 @@ const ReviewsCard = ({ name, review, img, flavor }) => {
       </p>
       <div className="flex flex-col items-center">
         <img
-          className="w-24 h-24 object-cover rounded-sm mb-4"
+          className="w-30 h-25 object-cover rounded-sm mb-4"
           src={img}
           alt={`${name} jerky`}
         />
