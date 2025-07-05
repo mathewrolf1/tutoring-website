@@ -52,24 +52,28 @@ const Checkout = () => {
 
     // Captures the order on your server
     const onApprove = (data) => {
-        console.log("4. Payment approved by user. Capturing on server...", data);
-        return fetch(`/api/orders/${data.orderID}/capture`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
+    console.log("4. Payment approved by user. Capturing on server...", data);
+    return fetch(`/api/orders/${data.orderID}/capture`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // 👇 ADD THIS BODY
+        body: JSON.stringify({
+            cart: cartItems
         })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Failed to capture order on server.");
-            }
-            console.log("5. Server capture response OK.");
-            return response.json();
-        })
-        .then((details) => {
-            console.log("6. Transaction complete!", details);
-            const name = details.payer.name.given_name;
-            alert(`Transaction completed by ${name}`);
-        });
-    };
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("Failed to capture order on server.");
+        }
+        console.log("5. Server capture response OK.");
+        return response.json();
+    })
+    .then((details) => {
+        console.log("6. Transaction complete!", details);
+        const name = details.payer.name.given_name;
+        alert(`Transaction completed by ${name}`);
+    });
+};
 
     // Handles errors from the entire PayPal flow
     const onError = (err) => {
