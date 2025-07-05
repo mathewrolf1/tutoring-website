@@ -33,7 +33,7 @@ const router = createBrowserRouter([
 ]);
 
 const initialOptions = {
-    "client-id": "AYBUk3_biCgd0QBzP8r4EC_Bixcz79G8p414NrTCrME_e9rif0pB9S15SJBHB7wv06w_QOBs3c8nko-w",// Replace with your actual PayPal client ID
+    "client-id": "sd",// Replace with your actual PayPal client ID
     currency: "USD",
     intent: "capture",
 };
