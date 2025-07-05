@@ -1,4 +1,3 @@
-
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { useCart } from '../src/context/CartContext';
 import Jerky from '../src/models/Jerky';
@@ -8,7 +7,8 @@ export default function ShoppingCart({ cartOpen, setCartOpen }) {
 
   return (
     <Dialog open={cartOpen} onClose={setCartOpen} className="relative z-40">
-      <DialogBackdrop className="fixed inset-0 bg-gray-500/75 transition-opacity duration-500 ease-in-out data-closed:opacity-0" />
+      {/* This line has been changed to make the background transparent */}
+      <DialogBackdrop className="fixed inset-0 bg-transparent transition-opacity duration-500 ease-in-out data-closed:opacity-0" />
 
       <div className="fixed inset-0 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
@@ -33,7 +33,7 @@ export default function ShoppingCart({ cartOpen, setCartOpen }) {
                   {cartItems.length === 0 ? (
                     <div className="text-center text-gray-500">
                       <p className="text-lg mb-4">Your cart is empty.</p>
-                      <a 
+                      <a
                         href="Shop"
                         onClick={() => setCartOpen(false)}
                         className="inline-flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-white font-medium hover:bg-indigo-700 cursor-pointer"
@@ -114,12 +114,12 @@ export default function ShoppingCart({ cartOpen, setCartOpen }) {
                   </div>
                 </div>
               )}
-              </div> 
+              </div>
             </DialogPanel>
           </div>
         </div>
       </div>
     </Dialog>
-         
+
   );
 }
