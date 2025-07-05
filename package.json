@@ -7,14 +7,19 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "@paypal/react-paypal-js": "^8.8.3",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.5",
     "class-variance-authority": "^0.7.1",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
     "headlessui": "^0.0.0",
     "next.js": "^1.0.3",
     "react": "^19.0.0",
@@ -35,5 +40,18 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "vite": "^6.3.1"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathewrolf1/highsteaksjerky.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mathewrolf1/highsteaksjerky/issues"
+  },
+  "homepage": "https://github.com/mathewrolf1/highsteaksjerky#readme"
 }
