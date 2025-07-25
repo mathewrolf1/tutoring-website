@@ -18,7 +18,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.5",
     "class-variance-authority": "^0.7.1",
-    "dotenv": "^17.0.1",
+    "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "headlessui": "^0.0.0",
     "next.js": "^1.0.3",

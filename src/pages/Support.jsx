@@ -21,7 +21,7 @@ const Support = () => {
                     Contact information
                 </h2>
                 <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto text-center">
-                    (123) 123-1234<br></br>Wolfie Grape Street, Sandersville<br></br>EledEdu@gmail.com
+                    (916) 500-2770<br></br>Based in El Dorado Hills, California<br></br>jerky@highsteaksjerky.com
                 </p>
                 
             </div>

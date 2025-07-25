@@ -4,7 +4,8 @@ import { MobileMenu } from '../../components/MobileMenu';
 import ShoppingCart from '../../components/ShoppingCart.jsx';
 import { useCart } from '../context/CartContext.jsx';
 import { useLocation } from "react-router-dom";
-import { jerkyCatalog, bagSizes } from '../models/Jerky.jsx';
+import Jerky, { jerkyCatalog, bagSizes } from '../models/Jerky.jsx';
+
 
 
 
@@ -19,7 +20,12 @@ const Shop = () => {
 
   // Find jerky object matching initial flavor, fallback to first
   const initialJerky = jerkyCatalog.find(j => j.getFlavor() === initialFlavor) || jerkyCatalog[0];
-  const [selectedJerky, setSelectedJerky] = useState(initialJerky);
+
+  const [selectedJerky, setSelectedJerky] = useState(() => {
+  const j = new Jerky(initialJerky.getFlavor(), initialJerky.getDescription(), bagSizes[0].value);
+  return j;
+});
+
   const [selectedBagSize, setSelectedBagSize] = useState(bagSizes[0].value);
   const [currentImage, setCurrentImage] = useState('');
 
@@ -28,7 +34,6 @@ const Shop = () => {
   // Update image whenever flavor or size changes
   useEffect(() => {
     try {
-      selectedJerky.setSize(selectedBagSize);
       setCurrentImage(selectedJerky.getImage());
     } catch (e) {
       setCurrentImage('/images/jerky_placeholder.png');
@@ -36,12 +41,20 @@ const Shop = () => {
   }, [selectedJerky, selectedBagSize]);
 
   const handleFlavorChange = (e) => {
-    const newFlavor = e.target.value;
-    const newJerky = jerkyCatalog.find(j => j.getFlavor() === newFlavor);
-    if (newJerky) setSelectedJerky(newJerky);
-  };
+  const newFlavor = e.target.value;
+  const baseJerky = jerkyCatalog.find(j => j.getFlavor() === newFlavor);
+  if (baseJerky) {
+    const newJerky = new Jerky(baseJerky.getFlavor(), baseJerky.getDescription(), selectedBagSize);
+    setSelectedJerky(newJerky);
+  }
+};
 
-  const handleBagSizeChange = (e) => setSelectedBagSize(e.target.value);
+  const handleBagSizeChange = (e) => {
+  const newSize = e.target.value;
+  setSelectedBagSize(newSize);
+  const updatedJerky = new Jerky(selectedJerky.getFlavor(), selectedJerky.getDescription(), newSize);
+  setSelectedJerky(updatedJerky);
+};
 
   const handleAddToCart = () => {
     const price = selectedJerky.getPrice();
